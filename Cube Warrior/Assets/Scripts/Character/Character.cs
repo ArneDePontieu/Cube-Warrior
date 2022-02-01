@@ -1,34 +1,17 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Character
 {
-    public class Character : MonoBehaviour, IMoveable, IDamageable
+    public class Character : Unit
     {
-        [SerializeField] private Rigidbody characterController;
-
-        public float MovementSpeed { get; set; }
-
-        private void Awake()
-        {
-            MovementSpeed = 10f;
-        }
-
-        public void Move(Vector3 direction, float speed)
-        {
-            Vector3 movementVector = direction.normalized * speed;
-            characterController.velocity = movementVector;
-            Debug.Log($"Moving -> {movementVector}");
-        }
-
-        public void TakeDamage(float amount, DamageType damageType)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        private void Update()
+        protected override void Update()
         {
             HandleInput();
+        }
+
+        public override void Die()
+        {
+            
         }
 
         private void HandleInput()
