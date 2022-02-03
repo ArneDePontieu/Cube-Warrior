@@ -4,8 +4,8 @@ namespace Character
 {
     public class Enemy : Unit
     {
-        [SerializeField] private Character player;
-
+        [SerializeField] public Character player;
+        
         protected override void Update()
         {
             Move(player.transform.position - transform.position, MovementSpeed);

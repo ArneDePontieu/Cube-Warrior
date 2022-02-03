@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface IDamageDealer
+﻿public interface IDamageDealer
 {
     float Damage { get; set; }
 }

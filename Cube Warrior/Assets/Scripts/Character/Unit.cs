@@ -2,7 +2,7 @@
 
 namespace Character
 {
-    public abstract class Unit : MonoBehaviour, IMoveable, IDamageable, IDamageDealer
+    public abstract class Unit : MonoBehaviour, IMoveable, IDamageable
     {
         [SerializeField] private Rigidbody rigidBody;
         [SerializeField] protected UnitStats stats;
@@ -24,7 +24,6 @@ namespace Character
             MovementSpeed = stats.MovementSpeed;
             MaxHealth = stats.MaxHealth;
             CurrentHealth = MaxHealth;
-            Damage = stats.Damage;
         }
 
         public float MaxHealth { get; set; }
@@ -40,15 +39,5 @@ namespace Character
         }
 
         public abstract void Die();
-
-        protected void OnTriggerStay(Collider other)
-        {
-            IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
-            damageable?.TakeDamage(Damage * Time.deltaTime, DamageType.Physical);
-
-            Debug.Log($"{name} health is now  {CurrentHealth}");
-        }
-
-        public float Damage { get; set; }
     }
 }
