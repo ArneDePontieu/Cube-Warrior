@@ -11,7 +11,7 @@ public class DamageAura :MonoBehaviour, IDamageDealer
         set => damage = value;
     }
 
-    protected void OnTriggerStay(Collider other)
+    protected void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag(tag))
         {

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour, IDamageDealer
 {
-    public Rigidbody rigidbody = null;
+    public Rigidbody2D rigidbody = null;
 
     [SerializeField] private float lifeTime = 5f;
     [SerializeField] private float projectileSpeed = 5f;
@@ -35,15 +35,15 @@ public class Projectile : MonoBehaviour, IDamageDealer
         }
     }
 
-    protected void OnCollisionEnter(Collision other)
+    protected void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.collider.CompareTag(tag))
+        if (other.CompareTag(tag))
         {
             Die();
             return;
         }
 
-        Unit target = other.collider.GetComponent<Unit>();
+        Unit target = other.GetComponent<Unit>();
 
         if (!target)
         {

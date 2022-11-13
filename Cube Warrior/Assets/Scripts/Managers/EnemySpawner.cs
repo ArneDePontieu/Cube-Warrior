@@ -56,11 +56,6 @@ public class EnemySpawner : MonoBehaviour
 
     private Vector3 GetSpawnLocation()
     {
-        //Vector3 centerPos = Camera.main.ScreenToWorldPoint(new Vector3( 
-        //    Screen.width/2f,
-        //    Screen.height/2f,
-        //    Camera.main.farClipPlane / 2));
-
         Vector3 spawnLocation = player.transform.position;
 
         Direction direction = (Direction) Random.Range(0, 3);
@@ -69,18 +64,18 @@ public class EnemySpawner : MonoBehaviour
         {
             case Direction.Up:
                 spawnLocation.x += (Random.Range(0, cameraWorldSize.x) - cameraWorldSize.x / 2);
-                spawnLocation.z += cameraWorldSize.y / 2f;
+                spawnLocation.y += cameraWorldSize.y / 2f;
                 break;
             case Direction.Right:
-                spawnLocation.z += (Random.Range(0, cameraWorldSize.y) - cameraWorldSize.y / 2);
+                spawnLocation.y += (Random.Range(0, cameraWorldSize.y) - cameraWorldSize.y / 2);
                 spawnLocation.x += cameraWorldSize.x / 2f;
                 break;
             case Direction.Down:
                 spawnLocation.x += (Random.Range(0, cameraWorldSize.x) - cameraWorldSize.x / 2);
-                spawnLocation.z += -cameraWorldSize.y / 2f;
+                spawnLocation.y += -cameraWorldSize.y / 2f;
                 break;
             case Direction.Left:
-                spawnLocation.z += (Random.Range(0, cameraWorldSize.y) - cameraWorldSize.y / 2);
+                spawnLocation.y += (Random.Range(0, cameraWorldSize.y) - cameraWorldSize.y / 2);
                 spawnLocation.x += cameraWorldSize.x / 2f;
                 break;
         }

@@ -4,7 +4,7 @@ namespace Character
 {
     public abstract class Unit : MonoBehaviour, IMoveable, IDamageable
     {
-        [SerializeField] private Rigidbody rigidBody;
+        [SerializeField] private Rigidbody2D rigidBody;
         [SerializeField] protected UnitStats stats;
 
         public float MovementSpeed { get; set; }

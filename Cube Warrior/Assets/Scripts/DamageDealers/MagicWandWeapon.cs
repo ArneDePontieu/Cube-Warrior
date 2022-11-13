@@ -29,13 +29,17 @@ public class MagicWandWeapon : Weapon
         ShootProjectile(closestEnemy.Item2.transform.position - transform.position);
     }
 
-    private void ShootProjectile(Vector3 target)
+    private void ShootProjectile(Vector3 targetDirection)
     {
-        Projectile projectile = Instantiate(projectilePrefab, transform.position + (target.normalized),
-            Quaternion.LookRotation(target));
+        Quaternion lookRotation = Quaternion.LookRotation(targetDirection);
+        lookRotation.x = 0;
+        lookRotation.y = 0;
+
+        Projectile projectile = Instantiate(projectilePrefab, transform.position + (targetDirection.normalized),
+            lookRotation);
 
         projectile.LifeTime = stats.lifeTime;
         projectile.Damage = stats.damage;
-        projectile.rigidbody.velocity = projectile.transform.forward * projectile.ProjectileSpeed;
+        projectile.rigidbody.velocity = targetDirection.normalized * projectile.ProjectileSpeed;
     }
 }
