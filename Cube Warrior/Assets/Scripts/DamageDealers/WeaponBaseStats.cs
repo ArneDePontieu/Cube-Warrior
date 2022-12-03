@@ -6,4 +6,5 @@ public class WeaponBaseStats : ScriptableObject
     public float damage;
     public float triggerDelay;
     public float lifeTime;
+    public float speed;
 }

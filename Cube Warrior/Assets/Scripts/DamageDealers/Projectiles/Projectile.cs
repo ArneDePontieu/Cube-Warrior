@@ -39,7 +39,7 @@ public class Projectile : MonoBehaviour, IDamageDealer
     {
         if (other.CompareTag(tag))
         {
-            Die();
+           // Die();
             return;
         }
 

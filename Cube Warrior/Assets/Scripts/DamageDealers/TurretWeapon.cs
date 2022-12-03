@@ -1,11 +1,26 @@
 ﻿using Character;
 using UnityEngine;
 
-public class MagicWandWeapon : Weapon
+public class TurretWeapon : Weapon
 {
     [SerializeField] private Projectile projectilePrefab;
 
-    protected override void TriggerWeapon()
+    private void ShootProjectile(Vector3 targetDirection)
+    {
+        Quaternion lookRotation = Quaternion.LookRotation(targetDirection);
+        lookRotation.x = 0;
+        lookRotation.y = 0;
+
+        Projectile projectile = Instantiate(projectilePrefab, transform.position + (targetDirection.normalized * 0.2f),
+            lookRotation);
+
+        projectile.LifeTime = stats.lifeTime;
+        projectile.Damage = stats.damage;
+        projectile.ProjectileSpeed = stats.speed;
+        projectile.rigidbody.velocity = targetDirection.normalized * projectile.ProjectileSpeed;
+    }
+
+    private void Shoot()
     {
         var enemies = FindObjectsOfType<Enemy>();
         (float, Enemy) closestEnemy = (int.MaxValue, null);
@@ -29,17 +44,8 @@ public class MagicWandWeapon : Weapon
         ShootProjectile(closestEnemy.Item2.transform.position - transform.position);
     }
 
-    private void ShootProjectile(Vector3 targetDirection)
+    protected override void TriggerWeapon()
     {
-        Quaternion lookRotation = Quaternion.LookRotation(targetDirection);
-        lookRotation.x = 0;
-        lookRotation.y = 0;
-
-        Projectile projectile = Instantiate(projectilePrefab, transform.position + (targetDirection.normalized),
-            lookRotation);
-
-        projectile.LifeTime = stats.lifeTime;
-        projectile.Damage = stats.damage;
-        projectile.rigidbody.velocity = targetDirection.normalized * projectile.ProjectileSpeed;
+        Shoot();
     }
 }
