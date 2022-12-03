@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 612678464151798908}
   baseStats: {fileID: 11400000, guid: 6b2df2fceccd447429882404b45e7201, type: 2}
+  weapon: {fileID: 612678464151798907}
 --- !u!114 &612678464151798907
 MonoBehaviour:
   m_ObjectHideFlags: 0

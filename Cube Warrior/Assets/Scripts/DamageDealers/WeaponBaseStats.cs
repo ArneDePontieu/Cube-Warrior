@@ -3,8 +3,8 @@
 [CreateAssetMenu(fileName = "WeaponBaseStats", menuName = "ScriptableObjects/WeaponBaseStats", order = 1)]
 public class WeaponBaseStats : ScriptableObject
 {
-    public float damage;
-    public float triggerDelay;
-    public float lifeTime;
-    public float speed;
+   [SerializeField] public float damage;
+   [SerializeField] public float triggerDelay;
+   [SerializeField] public float lifeTime;
+   [SerializeField] public float speed;
 }

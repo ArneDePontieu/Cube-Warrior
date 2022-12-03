@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Character;
+using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
@@ -6,21 +7,38 @@ public abstract class Weapon : MonoBehaviour
 
     protected float abilityTriggerTimer;
 
+    protected virtual float TriggerSpeedMultiplier => Modifiers.AttackSpeedMultiplier.Value;
+    protected Unit Owner;
+    protected WeaponModifiers Modifiers;
+
+    private float TriggerDelay => stats.triggerDelay;
+
+    public virtual void Initialize(Unit owner, WeaponModifiers modifiers)
+    {
+        Owner = owner;
+        Modifiers = modifiers;
+    }
+
     protected virtual void Update()
     {
-        if (stats.triggerDelay == 0f)
+        if (!Owner)
         {
             return;
         }
 
-        abilityTriggerTimer += Time.deltaTime;
-
-        if (abilityTriggerTimer < stats.triggerDelay)
+        if (TriggerDelay == 0f)
         {
             return;
         }
 
-        abilityTriggerTimer -= stats.triggerDelay;
+        abilityTriggerTimer += Time.deltaTime * TriggerSpeedMultiplier;
+
+        if (abilityTriggerTimer < TriggerDelay)
+        {
+            return;
+        }
+
+        abilityTriggerTimer -= TriggerDelay;
 
         TriggerWeapon();
     }

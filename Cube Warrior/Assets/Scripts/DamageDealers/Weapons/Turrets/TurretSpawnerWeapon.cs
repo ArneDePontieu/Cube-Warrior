@@ -8,6 +8,6 @@ public class TurretSpawnerWeapon : Weapon
     protected override void TriggerWeapon()
     {
         TurretUnit turretUnit = Instantiate(turretPrefab, transform.position, Quaternion.identity);
-        turretUnit.Initialize(stats.lifeTime);
+        turretUnit.Initialize(Owner);
     }
 }

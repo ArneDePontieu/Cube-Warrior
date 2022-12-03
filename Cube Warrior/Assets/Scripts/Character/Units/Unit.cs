@@ -7,9 +7,9 @@ namespace Character
         [SerializeField] private Rigidbody2D rigidBody;
         [SerializeField] protected UnitBaseStats baseStats;
 
-        private UnitStats currentStats = new UnitStats();
+        public UnitStats CurrentStats = new UnitStats();
 
-        public float MovementSpeed => currentStats.movementSpeed.Value;
+        public float MovementSpeed => CurrentStats.UnitModifiers.MovementSpeed.Value;
 
         public void Move(Vector3 direction, float speed)
         {
@@ -23,16 +23,16 @@ namespace Character
 
         protected virtual void Awake()
         {
-            Initialize();
+            InitializeStats();
         }
 
-        private void Initialize()
+        protected virtual void InitializeStats()
         {
-            currentStats.Initialize(baseStats);
-            CurrentHealth = currentStats.maxHealth.Value;
+            CurrentStats.Initialize(baseStats);
+            CurrentHealth = CurrentStats.UnitModifiers.MaxHealth.Value;
         }
 
-        public float MaxHealth => currentStats.maxHealth.Value;
+        public float MaxHealth => CurrentStats.UnitModifiers.MaxHealth.Value;
         public float CurrentHealth { get; set; }
 
         public void TakeDamage(float amount, DamageType damageType)

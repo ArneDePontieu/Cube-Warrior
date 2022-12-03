@@ -1,15 +1,19 @@
 ﻿using Character;
+using UnityEngine;
 
 public class TurretUnit : Unit
 {
+    [SerializeField] private Weapon weapon;
+
     private TurretUnitStats turretStats;
     private float duration;
-    
-    public void Initialize(float duration)
+    private Unit owner;
+
+    public void Initialize(Unit owner)
     {
-        this.duration = duration;
+        weapon.Initialize(this, owner.CurrentStats.TurretModifiers.weaponModifiers);
     }
-    
+
     protected override void Awake()
     {
         base.Awake();
@@ -27,7 +31,7 @@ public class TurretUnit : Unit
             return;
         }
     }
-    
+
     public override void Die()
     {
         Destroy(gameObject);
