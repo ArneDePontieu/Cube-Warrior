@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: WeaponTurretSpawnerStats
   m_EditorClassIdentifier: 
   damage: 0
-  triggerDelay: 5
+  triggerDelay: 1
   lifeTime: 10
   speed: 0

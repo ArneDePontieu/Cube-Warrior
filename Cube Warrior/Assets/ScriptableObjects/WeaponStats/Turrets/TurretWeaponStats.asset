@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TurretWeaponStats
   m_EditorClassIdentifier: 
   damage: 10
-  triggerDelay: 0.5
+  triggerDelay: 1
   lifeTime: 5
   speed: 0.5

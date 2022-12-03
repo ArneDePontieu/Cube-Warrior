@@ -1,26 +1,11 @@
 ﻿using Character;
 using UnityEngine;
 
-public class TurretWeapon : Weapon
+public class ProjectileWeapon : Weapon
 {
     [SerializeField] private Projectile projectilePrefab;
 
-    private void ShootProjectile(Vector3 targetDirection)
-    {
-        Quaternion lookRotation = Quaternion.LookRotation(targetDirection);
-        lookRotation.x = 0;
-        lookRotation.y = 0;
-
-        Projectile projectile = Instantiate(projectilePrefab, transform.position + (targetDirection.normalized * 0.2f),
-            lookRotation);
-
-        projectile.LifeTime = stats.lifeTime;
-        projectile.Damage = stats.damage;
-        projectile.ProjectileSpeed = stats.speed;
-        projectile.rigidbody.velocity = targetDirection.normalized * projectile.ProjectileSpeed;
-    }
-
-    private void Shoot()
+    protected override void TriggerWeapon()
     {
         var enemies = FindObjectsOfType<Enemy>();
         (float, Enemy) closestEnemy = (int.MaxValue, null);
@@ -44,8 +29,17 @@ public class TurretWeapon : Weapon
         ShootProjectile(closestEnemy.Item2.transform.position - transform.position);
     }
 
-    protected override void TriggerWeapon()
+    private void ShootProjectile(Vector3 targetDirection)
     {
-        Shoot();
+        Quaternion lookRotation = Quaternion.LookRotation(targetDirection);
+        lookRotation.x = 0;
+        lookRotation.y = 0;
+
+        Projectile projectile = Instantiate(projectilePrefab, transform.position + (targetDirection.normalized * 1.28f),
+            lookRotation);
+
+        projectile.LifeTime = stats.lifeTime;
+        projectile.Damage = stats.damage;
+        projectile.rigidbody.velocity = targetDirection.normalized * projectile.ProjectileSpeed;
     }
 }
