@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 1071892999728426071}
-  stats: {fileID: 11400000, guid: 42738f9e73c66904ab960970d2cbd484, type: 2}
+  baseStats: {fileID: 11400000, guid: 42738f9e73c66904ab960970d2cbd484, type: 2}
   player: {fileID: 0}
 --- !u!114 &-8248559235574860555
 MonoBehaviour:

@@ -14,7 +14,7 @@ public class TurretUnit : Unit
     {
         base.Awake();
 
-        if (stats is TurretUnitStats turretUnitStats)
+        if (baseStats is TurretUnitStats turretUnitStats)
         {
             turretStats = turretUnitStats;
         }

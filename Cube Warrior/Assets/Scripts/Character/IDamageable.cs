@@ -1,7 +1,7 @@
 ﻿
 public interface IDamageable
 {
-    float MaxHealth { get; set; }
+    float MaxHealth { get; }
     float CurrentHealth { get; set; }
 
     void TakeDamage(float amount, DamageType damageType);

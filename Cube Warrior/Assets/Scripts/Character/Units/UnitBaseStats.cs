@@ -2,8 +2,8 @@
 
 namespace Character
 {
-    [CreateAssetMenu(fileName = "UnitStats", menuName = "ScriptableObjects/UnitStats", order = 1)]
-    public class UnitStats : ScriptableObject
+    [CreateAssetMenu(fileName = "UnitBaseStats", menuName = "ScriptableObjects/UnitStats", order = 1)]
+    public class UnitBaseStats : ScriptableObject
     {
         public float MaxHealth;
         public float MovementSpeed;

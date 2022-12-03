@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "UnitStats", menuName = "ScriptableObjects/WeaponBaseStats", order = 1)]
+[CreateAssetMenu(fileName = "WeaponBaseStats", menuName = "ScriptableObjects/WeaponBaseStats", order = 1)]
 public class WeaponBaseStats : ScriptableObject
 {
     public float damage;

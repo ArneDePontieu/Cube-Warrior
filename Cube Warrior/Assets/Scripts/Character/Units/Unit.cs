@@ -5,9 +5,11 @@ namespace Character
     public abstract class Unit : MonoBehaviour, IMoveable, IDamageable
     {
         [SerializeField] private Rigidbody2D rigidBody;
-        [SerializeField] protected UnitStats stats;
+        [SerializeField] protected UnitBaseStats baseStats;
 
-        public float MovementSpeed { get; set; }
+        private UnitStats currentStats = new UnitStats();
+
+        public float MovementSpeed => currentStats.movementSpeed.Value;
 
         public void Move(Vector3 direction, float speed)
         {
@@ -21,12 +23,16 @@ namespace Character
 
         protected virtual void Awake()
         {
-            MovementSpeed = stats.MovementSpeed;
-            MaxHealth = stats.MaxHealth;
-            CurrentHealth = MaxHealth;
+            Initialize();
         }
 
-        public float MaxHealth { get; set; }
+        private void Initialize()
+        {
+            currentStats.Initialize(baseStats);
+            CurrentHealth = currentStats.maxHealth.Value;
+        }
+
+        public float MaxHealth => currentStats.maxHealth.Value;
         public float CurrentHealth { get; set; }
 
         public void TakeDamage(float amount, DamageType damageType)
