@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5406243216097495780}
   - component: {fileID: 6173228699278212741}
   m_Layer: 11
-  m_Name: WandProjectile
+  m_Name: TurretProjectile
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

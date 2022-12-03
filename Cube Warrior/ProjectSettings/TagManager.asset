@@ -17,9 +17,9 @@ TagManager:
   - Enemy
   - Player
   - PlayerSummon
-  - 
-  - 
-  - 
+  - PlayerProjectile
+  - EnemyProjectile
+  - PostProcessing
   - 
   - 
   - 
