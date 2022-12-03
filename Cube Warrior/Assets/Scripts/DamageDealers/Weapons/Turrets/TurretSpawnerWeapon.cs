@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class TurretSpawnerWeapon : Weapon
 {
-    [SerializeField] private Unit turretPrefab;
+    [SerializeField] private TurretUnit turretPrefab;
 
     protected override void TriggerWeapon()
     {
-        var turretUnit = Instantiate(turretPrefab, transform.position, Quaternion.identity);
+        TurretUnit turretUnit = Instantiate(turretPrefab, transform.position, Quaternion.identity);
+        turretUnit.Initialize(stats.lifeTime);
     }
 }

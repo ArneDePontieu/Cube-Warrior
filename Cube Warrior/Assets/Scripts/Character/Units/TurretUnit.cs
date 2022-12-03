@@ -3,6 +3,12 @@
 public class TurretUnit : Unit
 {
     private TurretUnitStats turretStats;
+    private float duration;
+    
+    public void Initialize(float duration)
+    {
+        this.duration = duration;
+    }
     
     protected override void Awake()
     {

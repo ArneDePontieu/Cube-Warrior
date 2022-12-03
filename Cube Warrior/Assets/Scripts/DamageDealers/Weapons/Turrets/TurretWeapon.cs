@@ -1,6 +1,3 @@
-﻿using Character;
-using UnityEngine;
-
-public class TurretWeapon : ProjectileWeapon
+﻿public class TurretWeapon : ProjectileWeapon
 {
 }

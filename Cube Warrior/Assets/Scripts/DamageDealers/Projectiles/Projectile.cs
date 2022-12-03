@@ -7,7 +7,6 @@ public class Projectile : MonoBehaviour, IDamageDealer
 
     [SerializeField] private float lifeTime = 5f;
     [SerializeField] private float projectileSpeed = 5f;
-    [SerializeField] private LayerMask layersToHit;
     
     private float lifeTimeTimer = 0f;
 
@@ -37,7 +36,7 @@ public class Projectile : MonoBehaviour, IDamageDealer
     }
 
     protected void OnTriggerEnter2D(Collider2D other)
-    {layersToHit.
+    {
         if (other.CompareTag(tag))
         {
            // Die();
