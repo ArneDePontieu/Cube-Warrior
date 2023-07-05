@@ -1,9 +1,15 @@
 ﻿using System.Collections.Generic;
 using Kryz.CharacterStats;
+using TigerForge;
 using UnityEngine;
 
 namespace Character
 {
+    public static partial class EventNames
+    {
+        public const string PlayerCharacterDied = "PLAYER_DEATH";
+    }
+    
     public class Character : Unit
     {
         public List<Weapon> weapons = new();
@@ -15,6 +21,7 @@ namespace Character
 
         public override void Die()
         {
+            EventManager.EmitEvent(EventNames.PlayerCharacterDied);
         }
 
         protected override void InitializeStats()

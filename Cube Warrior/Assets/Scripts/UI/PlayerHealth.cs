@@ -1,5 +1,4 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
@@ -9,6 +8,6 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
-        healthValue.text = playerCharacter.CurrentHealth.ToString();
+        healthValue.text = Mathf.Max(playerCharacter.CurrentHealth, 0f).ToString("#");
     }
 }
