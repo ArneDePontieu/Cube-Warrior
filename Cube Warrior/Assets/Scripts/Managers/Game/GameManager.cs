@@ -1,5 +1,4 @@
-﻿using Character;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {

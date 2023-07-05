@@ -6,7 +6,7 @@ namespace Character
 {
     public class Character : Unit
     {
-        public List<Weapon> weapons = new List<Weapon>();
+        public List<Weapon> weapons = new();
 
         protected override void Update()
         {
