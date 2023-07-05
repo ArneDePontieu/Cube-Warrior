@@ -39,7 +39,7 @@ public class ProjectileWeapon : Weapon
             lookRotation);
 
         projectile.LifeTime = stats.lifeTime;
-        projectile.Damage = stats.damage;
+        projectile.Damage = stats.damage * Modifiers.DamageMultiplier.Value;
         projectile.rigidbody.velocity = targetDirection.normalized * projectile.ProjectileSpeed;
     }
 }

@@ -20,10 +20,6 @@ namespace Character
         protected override void InitializeStats()
         {
             base.InitializeStats();
-            CurrentStats.UnitModifiers.MovementSpeed.AddModifier(new StatModifier(10f, StatModType.PercentAdd));
-            CurrentStats.WeaponModifiers.AttackSpeedMultiplier.AddModifier(new StatModifier(0.5f, StatModType.Flat));
-            CurrentStats.TurretModifiers.weaponModifiers.AttackSpeedMultiplier.AddModifier(
-                new StatModifier(10f, StatModType.Flat));
 
             for (int i = 0; i < weapons.Count; i++)
             {
