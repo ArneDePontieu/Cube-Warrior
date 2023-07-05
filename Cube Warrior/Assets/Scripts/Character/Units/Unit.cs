@@ -7,7 +7,7 @@ namespace Character
         [SerializeField] private Rigidbody2D rigidBody;
         [SerializeField] protected UnitBaseStats baseStats;
 
-        public UnitStats CurrentStats = new UnitStats();
+        public UnitStats CurrentStats = new();
 
         public float MovementSpeed => CurrentStats.UnitModifiers.MovementSpeed.Value;
 

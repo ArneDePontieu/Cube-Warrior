@@ -9,7 +9,7 @@ namespace Character
     {
         public const string PlayerCharacterDied = "PLAYER_DEATH";
     }
-    
+
     public class Character : Unit
     {
         public List<Weapon> weapons = new();
