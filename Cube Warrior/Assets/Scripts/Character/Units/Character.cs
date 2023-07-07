@@ -30,6 +30,11 @@ namespace Character
 
             for (int i = 0; i < weapons.Count; i++)
             {
+                if (!weapons[i])
+                {
+                    return;
+                }
+
                 weapons[i].Initialize(this, CurrentStats.WeaponModifiers);
             }
         }
