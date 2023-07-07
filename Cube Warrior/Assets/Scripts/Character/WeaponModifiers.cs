@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Kryz.CharacterStats;
-using UnityEngine;
+﻿using Kryz.CharacterStats;
 
 public class WeaponModifiers
 {

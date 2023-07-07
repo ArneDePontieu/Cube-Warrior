@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Character;
+﻿using Character;
 using Kryz.CharacterStats;
-using UnityEngine;
 
 public class UnitModifiers 
 {

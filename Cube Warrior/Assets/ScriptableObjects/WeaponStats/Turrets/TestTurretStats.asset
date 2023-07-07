@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a07e487e225c653479096994389cd14e, type: 3}
-  m_Name: TurretStats
+  m_Script: {fileID: 11500000, guid: 5079f389d363e24468613ed4899743d4, type: 3}
+  m_Name: TestTurretStats
   m_EditorClassIdentifier: 
   MaxHealth: 100
-  MovementSpeed: 5
+  MovementSpeed: 0
   Damage: 10
+  duration: 5

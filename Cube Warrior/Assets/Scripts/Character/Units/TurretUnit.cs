@@ -11,6 +11,8 @@ public class TurretUnit : Unit
 
     public void Initialize(Unit owner)
     {
+        this.owner = owner;
+
         weapon.Initialize(this, owner.CurrentStats.TurretModifiers.weaponModifiers);
     }
 
@@ -29,6 +31,13 @@ public class TurretUnit : Unit
         if (turretStats == null)
         {
             return;
+        }
+
+        duration += Time.deltaTime;
+
+        if (duration >= (owner.CurrentStats.TurretModifiers.durationModifiers.Value * turretStats.duration))
+        {
+            Die();
         }
     }
 
