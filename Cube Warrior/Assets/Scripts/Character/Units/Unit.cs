@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Character
 {
@@ -8,7 +9,8 @@ namespace Character
         [SerializeField] protected UnitBaseStats baseStats;
 
         public UnitStats CurrentStats = new();
-
+        public List<Weapon> weapons = new();
+        
         public float MovementSpeed => CurrentStats.UnitModifiers.MovementSpeed.Value;
 
         public void Move(Vector3 direction, float speed)
@@ -30,6 +32,16 @@ namespace Character
         {
             CurrentStats.Initialize(baseStats);
             CurrentHealth = CurrentStats.UnitModifiers.MaxHealth.Value;
+            
+            for (int i = 0; i < weapons.Count; i++)
+            {
+                if (!weapons[i])
+                {
+                    return;
+                }
+
+                weapons[i].Initialize(this, CurrentStats.WeaponModifiers);
+            }
         }
 
         public float MaxHealth => CurrentStats.UnitModifiers.MaxHealth.Value;

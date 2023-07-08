@@ -1,24 +1,37 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageAura :MonoBehaviour, IDamageDealer
+public class DamageAura : Weapon
 {
-    [SerializeField] private float damage=10f;
-    public float Damage
-    {
-        get => damage;
-        set => damage = value;
-    }
+    private List<IDamageable> enemyList = new();
 
-    protected void OnTriggerStay2D(Collider2D other)
+    protected void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag(tag))
         {
             return;
         }
-        
+
         IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
-        damageable?.TakeDamage(Damage * Time.deltaTime, DamageType.Physical);
+        enemyList.Add(damageable);
+    }
+
+    protected void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag(tag))
+        {
+            return;
+        }
+
+        IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
+        enemyList.Remove(damageable);
+    }
+
+    protected override void TriggerWeapon()
+    {
+        for (int i = 0; i < enemyList.Count; i++)
+        {
+            enemyList[i]?.TakeDamage(stats.damage * Modifiers.DamageMultiplier.Value, DamageType.Physical);
+        }
     }
 }

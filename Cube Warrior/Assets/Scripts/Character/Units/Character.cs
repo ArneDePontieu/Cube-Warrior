@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Kryz.CharacterStats;
 using TigerForge;
 using UnityEngine;
 
@@ -10,10 +9,11 @@ namespace Character
         public const string PlayerCharacterDied = "PLAYER_DEATH";
     }
 
-    public class Character : Unit
+    public class Character : Unit, ILevelable
     {
-        public List<Weapon> weapons = new();
-
+        public float CurrentExperience { get; set; }
+        public float CurrentLevel { get; set; }
+        
         protected override void Update()
         {
             HandleInput();
@@ -22,21 +22,6 @@ namespace Character
         public override void Die()
         {
             EventManager.EmitEvent(EventNames.PlayerCharacterDied);
-        }
-
-        protected override void InitializeStats()
-        {
-            base.InitializeStats();
-
-            for (int i = 0; i < weapons.Count; i++)
-            {
-                if (!weapons[i])
-                {
-                    return;
-                }
-
-                weapons[i].Initialize(this, CurrentStats.WeaponModifiers);
-            }
         }
 
         private void HandleInput()
