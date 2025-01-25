@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
 namespace Character
 {
@@ -14,6 +15,11 @@ namespace Character
         public override void Die()
         {
             Destroy(gameObject);
+        }
+        
+        void OnDrawGizmos() 
+        {
+            Handles.Label(transform.position, name);
         }
     }
 }

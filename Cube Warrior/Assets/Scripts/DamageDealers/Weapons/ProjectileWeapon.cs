@@ -7,7 +7,19 @@ public class ProjectileWeapon : Weapon
 
     protected override void TriggerWeapon()
     {
-        var enemies = FindObjectsOfType<Enemy>();
+        Enemy enemy = FindClosestEnemy();
+        
+        if (enemy == null)
+        {
+            return;
+        }
+        
+        ShootProjectileAtTarget(enemy);
+    }
+
+    private Enemy FindClosestEnemy()
+    {
+        Enemy[] enemies = FindObjectsOfType<Enemy>();
         (float, Enemy) closestEnemy = (int.MaxValue, null);
 
         for (int i = 0; i < enemies.Length; i++)
@@ -21,25 +33,19 @@ public class ProjectileWeapon : Weapon
             closestEnemy = (distance, enemies[i]);
         }
 
-        if (closestEnemy.Item2 == null)
-        {
-            return;
-        }
-
-        ShootProjectile(closestEnemy.Item2.transform.position - transform.position);
+        return closestEnemy.Item2;
     }
 
-    private void ShootProjectile(Vector3 targetDirection)
+    private void ShootProjectileAtTarget(Enemy target)
     {
-        Quaternion lookRotation = Quaternion.LookRotation(targetDirection);
-        lookRotation.x = 0;
-        lookRotation.y = 0;
+        Vector3 direction = target.transform.position - transform.position;
+        
+        // Calculate the angle in degrees
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        
+        Projectile projectile = Instantiate(projectilePrefab, transform.position + (direction.normalized * 1.28f),
+            Quaternion.Euler(0f, 0f, angle));
 
-        Projectile projectile = Instantiate(projectilePrefab, transform.position + (targetDirection.normalized * 1.28f),
-            lookRotation);
-
-        projectile.LifeTime = stats.lifeTime;
-        projectile.Damage = stats.damage * Modifiers.DamageMultiplier.Value;
-        projectile.rigidbody.velocity = targetDirection.normalized * projectile.ProjectileSpeed;
+        projectile.Initialize(stats, Modifiers, target);
     }
 }

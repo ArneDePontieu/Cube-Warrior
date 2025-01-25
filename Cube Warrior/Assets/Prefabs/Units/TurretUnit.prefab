@@ -50,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 612678464151798908}
   baseStats: {fileID: 11400000, guid: 20eeb059e4c4b804a970ade2facdbaa7, type: 2}
+  weapons: []
   weapon: {fileID: 612678464151798907}
 --- !u!114 &612678464151798907
 MonoBehaviour:
@@ -64,7 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: a1c4b2fae25d58a439be7ca7a5879dd2, type: 2}
-  projectilePrefab: {fileID: 462631724293925568, guid: 71d4fe3093135434cb64b5e8e8271269,
+  projectilePrefab: {fileID: 462631724293925568, guid: 9f751af3a5f83e447a4b625d5a602dee,
     type: 3}
 --- !u!212 &612678464151798904
 SpriteRenderer:

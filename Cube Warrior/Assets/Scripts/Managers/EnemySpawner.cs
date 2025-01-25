@@ -26,7 +26,8 @@ public class EnemySpawner : MonoBehaviour
     private Vector2 cameraWorldSize;
 
     private float waveTimer;
-
+    private int counter;
+    
     private void Awake()
     {
         float aspectRatio = (float) Screen.width / Screen.height;
@@ -47,8 +48,11 @@ public class EnemySpawner : MonoBehaviour
 
         for (int i = 0; i < waveSize; i++)
         {
-            var enemy = Instantiate(enemyPrefab,
+            counter++;
+            Enemy enemy = Instantiate(enemyPrefab,
                 player.transform.position + GetSpawnLocation(), Quaternion.identity);
+            enemy.name = $"Enemy {counter}";
+            
             enemy.player = player;
         }
     }
