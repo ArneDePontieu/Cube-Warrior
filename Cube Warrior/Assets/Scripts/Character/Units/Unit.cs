@@ -16,7 +16,7 @@ namespace Character
         public void Move(Vector3 direction, float speed)
         {
             Vector3 movementVector = direction.normalized * speed;
-            rigidBody.velocity = movementVector;
+            rigidBody.linearVelocity = movementVector;
         }
 
         protected virtual void Update()

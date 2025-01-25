@@ -70,10 +70,10 @@ public class Projectile : MonoBehaviour, IDamageDealer
         Vector2 direction = (currentTarget.transform.position - transform.position).normalized;
 
         // Interpolate between current direction and target direction
-        Vector2 newDirection = Vector2.Lerp(rigidbody.velocity.normalized, direction, HomingStrength * Time.deltaTime);
+        Vector2 newDirection = Vector2.Lerp(rigidbody.linearVelocity.normalized, direction, HomingStrength * Time.deltaTime);
         Vector2 velocity = newDirection * ProjectileSpeed;
 
-        rigidbody.velocity = velocity;
+        rigidbody.linearVelocity = velocity;
         float angle = Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg;
         rigidbody.rotation = angle;
     }
@@ -164,6 +164,6 @@ public class Projectile : MonoBehaviour, IDamageDealer
         // Apply rotation to the bullet
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
-        rigidbody.velocity = direction.normalized * ProjectileSpeed;
+        rigidbody.linearVelocity = direction.normalized * ProjectileSpeed;
     }
 }
