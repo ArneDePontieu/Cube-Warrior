@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using TigerForge;
+﻿using TigerForge;
 using UnityEngine;
 
 namespace Character
