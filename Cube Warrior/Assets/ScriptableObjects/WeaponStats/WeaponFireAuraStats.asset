@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a0ac8cd517e9d54595d74f65d52e377, type: 3}
   m_Name: WeaponFireAuraStats
   m_EditorClassIdentifier: 
-  damage: 10
-  triggerDelay: 0.5
+  damage: 1
+  triggerDelay: 0.1
   lifeTime: 5
-  speed: 0.5
+  projectileSpeed: 0.5
+  chains: 0
+  homingStrength: 0

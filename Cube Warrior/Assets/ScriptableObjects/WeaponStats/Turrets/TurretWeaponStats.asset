@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   triggerDelay: 1
-  lifeTime: 5
-  speed: 0.5
+  lifeTime: 10
+  projectileSpeed: 10
+  chains: 3
+  homingStrength: 3
